@@ -12,7 +12,7 @@
   --muted-color: #6b7280;
   --card-color: #ffffff;
   --border-color: rgba(0, 0, 0, 0.08);
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --code-color: #0f766e;
   --radius: 8px;
   --transition: 0.3s ease;
   --font-family: "Roboto", system-ui, sans-serif;
@@ -24,7 +24,7 @@
   --muted-color: #9ca3af;
   --card-color: #1e1e22;
   --border-color: rgba(255, 255, 255, 0.1);
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --code-color: #5eead4;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,27 +50,30 @@ body {
   transition: background-color var(--transition), color var(--transition);
 }
 
+/* Inline code: override Bootstrap's pink with a theme-aware color. */
+code {
+  color: var(--code-color);
+}
+
 /*------------------------------------*\
 #Components
 \*------------------------------------*/
 
-/* Page: the full-width content wrapper every experiment page uses (replaces
-   Bootstrap's .container). No max-width — pages get the whole screen, with
-   comfortable side padding and enough top padding to clear the fixed nav
-   toggle button (40px tall at 12px from the top). */
+/* Page: the content wrapper every experiment page uses (replaces Bootstrap's
+   .container). Centered, capped at 1600px, with comfortable side padding and
+   enough top padding to clear the fixed nav toggle button (40px tall at 12px
+   from the top). */
 .c-page {
+  max-width: 1600px;
+  margin-inline: auto;
   padding: 4.5rem clamp(1.5rem, 4vw, 4rem) 2rem;
 }
 
-/* Card: the standard content block every experiment presents itself in. */
+/* Card: a plain section — just a title, an optional tagline and the experiment
+   itself. No box styling; the experiment's own element carries a simple
+   border where it needs one. */
 .c-card {
-  margin: 0 0 2rem;
-  padding: 2rem;
-  background-color: var(--card-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: background-color var(--transition), color var(--transition);
+  margin: 0 0 3rem;
 
   h1 {
     font-size: 1.5rem;

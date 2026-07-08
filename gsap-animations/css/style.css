@@ -13,7 +13,6 @@
   min-height: 7rem;
   margin-block: 1rem;
   padding: 1.5rem;
-  background-color: var(--bg-color);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   overflow: hidden;
