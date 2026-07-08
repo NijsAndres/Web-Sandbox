@@ -54,10 +54,17 @@ body {
 #Components
 \*------------------------------------*/
 
+/* Page: the full-width content wrapper every experiment page uses (replaces
+   Bootstrap's .container). No max-width — pages get the whole screen, with
+   comfortable side padding and enough top padding to clear the fixed nav
+   toggle button (40px tall at 12px from the top). */
+.c-page {
+  padding: 4.5rem clamp(1.5rem, 4vw, 4rem) 2rem;
+}
+
 /* Card: the standard content block every experiment presents itself in. */
 .c-card {
-  max-width: 600px;
-  margin: 3rem auto;
+  margin: 0 0 2rem;
   padding: 2rem;
   background-color: var(--card-color);
   border: 1px solid var(--border-color);

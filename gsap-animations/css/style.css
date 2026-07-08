@@ -1,0 +1,111 @@
+/*------------------------------------*\
+#GSAP animations experiment
+\*------------------------------------*/
+/* Colors, body and card styles come from the shared base stylesheet
+   (shared/base/base.css); only the experiment's own components live here.
+   The stages are deliberately plain: GSAP does the styling-in-motion. */
+.c-gsap__heading {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.c-gsap__stage {
+  position: relative;
+  min-height: 7rem;
+  margin-block: 1rem;
+  padding: 1.5rem;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.c-gsap__stage--tall {
+  min-height: 12rem;
+}
+.c-gsap__stage--arena {
+  cursor: crosshair;
+}
+.c-gsap__box {
+  width: 3.5rem;
+  aspect-ratio: 1/1;
+  background: linear-gradient(135deg, #0ae448, #07a834);
+  border-radius: var(--radius);
+}
+.c-gsap__box--secondary {
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+}
+.c-gsap__box--tertiary {
+  background: linear-gradient(135deg, #ff4d6d, #e5173f);
+}
+.c-gsap__box--round {
+  border-radius: 50%;
+  pointer-events: none;
+}
+.c-gsap__box + .c-gsap__box {
+  margin-top: 0.75rem;
+}
+.c-gsap__button {
+  border: none;
+  padding: 0.4rem 1rem;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  border-radius: 0.25rem;
+  transition: opacity 0.2s ease-in-out;
+}
+.c-gsap__button:hover {
+  opacity: 0.8;
+}
+.c-gsap__controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.c-gsap__select {
+  padding: 0.4rem 0.5rem;
+  background-color: var(--card-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+}
+.c-gsap__grid {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 0.75rem;
+  width: fit-content;
+  margin-inline: auto;
+}
+.c-gsap__grid--flip {
+  grid-template-columns: repeat(6, auto);
+  gap: 0.5rem;
+}
+.c-gsap__dot {
+  width: 0.75rem;
+  aspect-ratio: 1/1;
+  background-color: #0ae448;
+  border-radius: 50%;
+}
+.c-gsap__tile {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  aspect-ratio: 1/1;
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+.c-gsap__type {
+  min-height: 3rem;
+  margin: 0;
+  font-family: monospace;
+}
+.c-gsap__progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 0.25rem;
+  background-color: #0ae448;
+  transform: scaleX(0);
+  transform-origin: left center;
+}

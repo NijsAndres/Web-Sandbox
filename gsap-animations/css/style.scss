@@ -1,0 +1,145 @@
+/*------------------------------------*\
+#GSAP animations experiment
+\*------------------------------------*/
+
+/* Colors, body and card styles come from the shared base stylesheet
+   (shared/base/base.css); only the experiment's own components live here.
+   The stages are deliberately plain: GSAP does the styling-in-motion. */
+
+.c-gsap {
+    // GSAP's brand green, used for the boxes and the scroll progress bar.
+    $accent: #0ae448;
+    $accent-secondary: #8b5cf6;
+    $accent-tertiary: #ff4d6d;
+
+    &__heading {
+        font-size: 1.15rem;
+        font-weight: 600;
+    }
+
+    // The area every animation plays in. position: relative so the absolute
+    // positioned boxes (quickTo) and Draggable bounds work from its box.
+    &__stage {
+        position: relative;
+        min-height: 7rem;
+        margin-block: 1rem;
+        padding: 1.5rem;
+        background-color: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        overflow: hidden;
+
+        &--tall {
+            min-height: 12rem;
+        }
+
+        &--arena {
+            cursor: crosshair;
+        }
+    }
+
+    &__box {
+        width: 3.5rem;
+        aspect-ratio: 1/1;
+        background: linear-gradient(135deg, $accent, #07a834);
+        border-radius: var(--radius);
+
+        &--secondary {
+            background: linear-gradient(135deg, $accent-secondary, #6d28d9);
+        }
+
+        &--tertiary {
+            background: linear-gradient(135deg, $accent-tertiary, #e5173f);
+        }
+
+        &--round {
+            border-radius: 50%;
+            pointer-events: none; // the arena tracks the mouse, not the box
+        }
+
+        // The timeline experiment stacks three boxes vertically.
+        + .c-gsap__box {
+            margin-top: 0.75rem;
+        }
+    }
+
+    &__button {
+        border: none;
+        padding: 0.4rem 1rem;
+        background-color: var(--text-color);
+        color: var(--bg-color);
+        border-radius: 0.25rem;
+        transition: opacity 0.2s ease-in-out;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &__controls {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    &__select {
+        padding: 0.4rem 0.5rem;
+        background-color: var(--card-color);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        border-radius: 0.25rem;
+    }
+
+    // 5x5 dot grid for the stagger experiment.
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        gap: 0.75rem;
+        width: fit-content;
+        margin-inline: auto;
+
+        // Wider grid of numbered tiles for the Flip experiment.
+        &--flip {
+            grid-template-columns: repeat(6, auto);
+            gap: 0.5rem;
+        }
+    }
+
+    &__dot {
+        width: 0.75rem;
+        aspect-ratio: 1/1;
+        background-color: $accent;
+        border-radius: 50%;
+    }
+
+    &__tile {
+        display: grid;
+        place-items: center;
+        width: 3rem;
+        aspect-ratio: 1/1;
+        background-color: var(--card-color);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        font-weight: 600;
+    }
+
+    &__type {
+        min-height: 3rem; // reserve space so the card doesn't grow while typing
+        margin: 0;
+        font-family: monospace;
+    }
+
+    // Page-wide scroll progress bar (experiment 08). GSAP animates scaleX
+    // from 0 to 1, so it grows from the left edge.
+    &__progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        height: 0.25rem;
+        background-color: $accent;
+        transform: scaleX(0);
+        transform-origin: left center;
+    }
+}
