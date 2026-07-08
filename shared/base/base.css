@@ -1,0 +1,70 @@
+/*------------------------------------*\
+#Shared sandbox base styles
+\*------------------------------------*/
+/* Design tokens. Light by default, dark when the OS prefers it or when the
+   theme toggle experiment sets the .dark class on <html>. A .light class
+   always wins over the OS preference. */
+:root {
+  --bg-color: #f4f5f7;
+  --text-color: #1a1a1e;
+  --muted-color: #6b7280;
+  --card-color: #ffffff;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --radius: 8px;
+  --transition: 0.3s ease;
+  --font-family: "Roboto", system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --bg-color: #121214;
+    --text-color: #f5f5f5;
+    --muted-color: #9ca3af;
+    --card-color: #1e1e22;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+}
+:root.dark {
+  --bg-color: #121214;
+  --text-color: #f5f5f5;
+  --muted-color: #9ca3af;
+  --card-color: #1e1e22;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/*------------------------------------*\
+#Elements
+\*------------------------------------*/
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+/*------------------------------------*\
+#Components
+\*------------------------------------*/
+/* Card: the standard content block every experiment presents itself in. */
+.c-card {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: background-color var(--transition), color var(--transition);
+}
+.c-card h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.c-card p {
+  color: var(--muted-color);
+}
