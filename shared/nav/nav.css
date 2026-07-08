@@ -140,3 +140,35 @@
   background-color: var(--nav-item-active-bg);
   font-weight: 600;
 }
+
+/* Theme switch: small, subtle, pinned to the bottom of the panel */
+.c-nav__footer {
+  margin-top: auto;
+  padding: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.c-nav__theme {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.25s ease, background-color 0.25s ease;
+}
+.c-nav__theme:hover {
+  opacity: 1;
+  background-color: var(--nav-item-hover-bg);
+}
+.c-nav__theme svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}

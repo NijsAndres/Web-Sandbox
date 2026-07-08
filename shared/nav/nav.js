@@ -21,6 +21,8 @@ const rootUrl = new URL("../../", document.currentScript.src).href;
 
 const getNavElement = () => document.querySelector(".js-nav");
 
+const getThemeButtonElement = () => document.querySelector(".js-nav-theme");
+
 // #endregion
 
 // #region ***  Callback-Visualisation - show___         ***********
@@ -50,9 +52,24 @@ const showNav = () => {
       <ul class="c-nav__list">
         ${experiments.map(showNavItem).join("")}
       </ul>
+      <div class="c-nav__footer">
+        <button class="js-nav-theme c-nav__theme" type="button"></button>
+      </div>
     </nav>
   `;
   document.body.appendChild(nav);
+};
+
+const showThemeButton = () => {
+  const isDark = getCurrentTheme() === "dark";
+  getThemeButtonElement().innerHTML = `
+    <i data-lucide="${isDark ? "sun" : "moon"}"></i>
+    <span>${isDark ? "Light mode" : "Dark mode"}</span>
+  `;
+  // Lucide replaces <i data-lucide> with an svg, so re-run it after updates.
+  if (window.lucide) {
+    lucide.createIcons();
+  }
 };
 
 const showNavItem = (experiment) => {
@@ -103,6 +120,13 @@ const getIsCurrentPage = (href) => {
   return normalize(new URL(href).pathname) === normalize(window.location.pathname);
 };
 
+const getCurrentTheme = () => {
+  const html = document.documentElement;
+  if (html.classList.contains("dark")) return "dark";
+  if (html.classList.contains("light")) return "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+};
+
 // #endregion
 
 // #region ***  Event Listeners - listenTo___            ***********
@@ -121,6 +145,19 @@ const listenToNavToggle = () => {
   });
 };
 
+const listenToThemeToggle = () => {
+  getThemeButtonElement().addEventListener("click", () => {
+    const newTheme = getCurrentTheme() === "dark" ? "light" : "dark";
+    document.documentElement.classList.remove("dark", "light");
+    document.documentElement.classList.add(newTheme);
+    localStorage.setItem("theme", newTheme);
+    showThemeButton();
+    document.dispatchEvent(new CustomEvent("themechange", { detail: newTheme }));
+  });
+  // Keep the button in sync when an experiment changes the theme itself.
+  document.addEventListener("themechange", showThemeButton);
+};
+
 // #endregion
 
 // #region ***  Init / DOMContentLoaded                  ***********
@@ -129,8 +166,10 @@ const initNav = () => {
   showSavedTheme();
   showStylesheet();
   showNav();
+  showThemeButton();
   showIcons();
   listenToNavToggle();
+  listenToThemeToggle();
 };
 
 document.addEventListener("DOMContentLoaded", initNav);

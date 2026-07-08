@@ -38,12 +38,16 @@ const listenToThemeChange = () => {
   const themeToggleButtons = document.querySelectorAll(".js-theme-toggle");
   for (const button of themeToggleButtons) {
     button.addEventListener("click", () => {
-      html.classList.toggle("dark");
-      const newTheme = html.classList.contains("dark") ? "dark" : "light";
+      const newTheme = html.classList.contains("dark") ? "light" : "dark";
+      html.classList.remove("dark", "light");
+      html.classList.add(newTheme);
       showThemeToggle(newTheme);
       localStorage.setItem("theme", newTheme);
+      document.dispatchEvent(new CustomEvent("themechange", { detail: newTheme }));
     });
   }
+  // Stay in sync when the theme is switched elsewhere (e.g. the nav footer).
+  document.addEventListener("themechange", (event) => showThemeToggle(event.detail));
 };
 
 // #endregion
