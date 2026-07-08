@@ -59,7 +59,16 @@ const playTo = () => {
   const box = document.querySelector(".js-box-to");
 
   // ✍️ your code here
-
+  gsap.to(box, {
+    x: 300,
+    rotation: 360,
+    duration: 1,
+    ease: "power1.inOut",
+    yoyo: true,
+    repeat: 100,
+    borderRadius: "50%",
+    backgroundColor: "#ff4d6d",
+  });
 };
 
 // #endregion
@@ -97,7 +106,6 @@ const playFromTo = () => {
   const box = document.querySelector(".js-box-fromto");
 
   // ✍️ your code here
-
 };
 
 // #endregion
@@ -137,7 +145,6 @@ const playEase = () => {
   const selectedEase = document.querySelector(".js-ease-select").value;
 
   // ✍️ your code here
-
 };
 
 // #endregion
@@ -180,7 +187,6 @@ const playStagger = () => {
   const dots = gsap.utils.toArray(".js-stagger-grid > *");
 
   // ✍️ your code here
-
 };
 
 // Plumbing (not part of the exercise): builds the 5x5 grid of dots at load.
@@ -236,9 +242,7 @@ const buildStaggerGrid = () => {
           .reverse(), .pause(), .seek(1) on it — timelines are players.
 */
 const playTimeline = () => {
-
   // ✍️ your code here
-
 };
 
 // #endregion
@@ -282,7 +286,6 @@ const initQuickTo = () => {
   const box = document.querySelector(".js-box-quickto");
 
   // ✍️ your code here
-
 };
 
 // #endregion
@@ -314,7 +317,6 @@ const playText = () => {
   const target = document.querySelector(".js-typewriter");
 
   // ✍️ your code here
-
 };
 
 // #endregion
@@ -367,9 +369,7 @@ const playText = () => {
           animation plays out.
 */
 const initScrollTrigger = () => {
-
   // ✍️ your code here
-
 };
 
 // #endregion
@@ -411,7 +411,6 @@ const initDraggable = () => {
   const box = document.querySelector(".js-box-drag");
 
   // ✍️ your code here
-
 };
 
 // #endregion
@@ -451,12 +450,9 @@ const playFlip = () => {
   // ✍️ step 1: photograph the current layout here
 
   // step 2 (done for you): shuffle the DOM order — without Flip this jumps.
-  items
-    .sort(() => Math.random() - 0.5)
-    .forEach((item) => grid.appendChild(item));
+  items.sort(() => Math.random() - 0.5).forEach((item) => grid.appendChild(item));
 
   // ✍️ step 3: animate from the photographed layout here
-
 };
 
 // Plumbing (not part of the exercise): builds the numbered tiles at load.
