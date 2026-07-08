@@ -7,6 +7,7 @@ const experiments = [
   { name: "Home", path: "", icon: "house" },
   { name: "Dark/Light Theme", path: "dark-light-theme", icon: "sun-moon" },
   { name: "Language Toggle", path: "language-toggle", icon: "languages" },
+  { name: "GSAP Animations", path: "gsap-animations", icon: "sparkles" },
 ];
 
 const lucideScriptUrl = "https://cdn.jsdelivr.net/npm/lucide@0.525.0/dist/umd/lucide.min.js";
