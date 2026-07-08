@@ -1,39 +1,21 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background-color: white;
-  color: black;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.container {
-  padding: 2rem;
-  background-color: #f5f5f5;
-  max-width: 600px;
-  margin: 2rem auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
+/*------------------------------------*\
+#Language toggle experiment
+\*------------------------------------*/
+/* Colors, body and card styles come from the shared base stylesheet
+   (shared/base/base.css); only the toggle component lives here. */
 .c-language__togglecontainer {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.25rem;
-  background-color: white;
-  width: -moz-fit-content;
+  background-color: var(--bg-color);
   width: fit-content;
   border-radius: 0.25rem;
   gap: 0.25rem;
 }
 .c-language__toggle {
   border: none;
-  color: black;
+  color: var(--text-color);
   background-color: transparent;
   width: 2rem;
   aspect-ratio: 1/1;
@@ -41,6 +23,6 @@ body {
   transition: all 0.3s ease-in-out;
 }
 .c-language__toggle--active, .c-language__toggle:hover {
-  background-color: #e1e1e1;
-  color: black;
+  background-color: var(--text-color);
+  color: var(--bg-color);
 }

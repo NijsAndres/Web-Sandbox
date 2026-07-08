@@ -2,7 +2,8 @@
  # SETTINGS
 /*---------------------------------------*/
 
-$bg-darkgray: #333;
+/* Colors, typography and the .c-card component come from the shared base
+   stylesheet (shared/base/base.css). Only home-page specifics live here. */
 
 /*---------------------------------------/*
  # GENERIC - BOOTSTRAP
@@ -11,14 +12,6 @@ $bg-darkgray: #333;
 /*---------------------------------------/*
  # ELEMENTS
 /*---------------------------------------*/
-
-body {
-    background-color: $bg-darkgray;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-}
 
 /*---------------------------------------/*
  # OBJECTS
